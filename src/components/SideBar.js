@@ -24,7 +24,8 @@ export default function SwipeableTemporaryDrawer() {
       setIsLoading(true)
       let apiKey='0fe92a7831aa41c68302297e91dce89b'
       try {
-        let fetchData = await axios.get(`https://newsapi.org/v2/top-headlines?country=us&category=${Category}&apiKey=${apiKey}`);
+        let fetchData = await axios.get(`https://newsapi.org/v2/everything?q=tesla&from=2022-06-12&sortBy=publishedAt&apiKey=0fe92a7831aa41c68302297e91dce89b
+        `);
         setUserdata(fetchData.data.articles)
         fetchData.data.articles&&setIsLoading(false)
       } catch (error) {
@@ -33,7 +34,7 @@ export default function SwipeableTemporaryDrawer() {
       }
     }
     getUserData()
-  }, [])
+  }, [Category,userData,isLoading])
 
   const [state, setState] = React.useState({
     top: false,
