@@ -21,20 +21,19 @@ export default function SwipeableTemporaryDrawer() {
 
   React.useEffect(() => {
     const getUserData=async()=>{
-      setIsLoading(true)
+      // setIsLoading(true)
       let apiKey='0fe92a7831aa41c68302297e91dce89b'
       try {
-        let fetchData = await axios.get(`https://newsapi.org/v2/everything?q=tesla&from=2022-06-12&sortBy=publishedAt&apiKey=0fe92a7831aa41c68302297e91dce89b
-        `);
+        let fetchData = await axios.get(`https://newsapi.org/v2/top-headlines?country=us&category=${Category}&apiKey=${apiKey}`);
         setUserdata(fetchData.data.articles)
-        fetchData.data.articles&&setIsLoading(false)
+        // setIsLoading(false)
       } catch (error) {
         setIsLoading(false)
         console.log(error)
       }
     }
     getUserData()
-  }, [Category,userData,isLoading])
+  }, [userData,isLoading,Category])
 
   const [state, setState] = React.useState({
     top: false,
